@@ -1,30 +1,43 @@
 "use strict";
 
-const numberOfFilms = +prompt("Այսօր քանի ֆիլմ եք դիտել?");
+
+  let numberOfFilms = prompt("Այսօր քանի ֆիլմ եք դիտել?",);
+  if ( numberOfFilms  <=3)
+  {
+    console.log("դասական ֆիլմ դիտող ա")
+
+  } else if ( numberOfFilms  <=6)
+  {
+    console.log("շատ եք սիրում ֆիլմ դիտել")
+
+  }  else{
+    console.log("կինեի մեռածա ")
+
+  }  while( numberOfFilms === "" || numberOfFilms=== 0 || isNaN(numberOfFilms)){
+    numberOfFilms = prompt("Այսօր քանի ֆիլմ եք դիտել?",)
+  }
 
 const personalMovieDB = {
   count: isNaN(numberOfFilms) ? 0 : numberOfFilms ,
   movies: {},
   actors: {},
   genres: [],
-  privat: true,
+  privat: false,
 }
-
-const a = prompt("Ո՞ր ֆիլմն եք վերջերս դիտել", ),
-      b = +prompt(`Ինչքա՞ն եք գնահատում այդ <<${a !== "" && a !== null ? a: "film1" }>> ֆիլմը`),
-      c = prompt("Ո՞ր ֆիլմն եք վերջերս դիտել", ),
-      d = +prompt(`Ինչքա՞ն եք գնահատում այդ <<${ c !== "" && c !== null ? c: "film2"}>> ֆիլմը`);
-        
-     
-    
-
-personalMovieDB.movies[a !== "" && a !== null ? a: "film1"] = b;
-personalMovieDB.movies[c !== "" && c !== null ? c: "film2"] = d;
+for( let i=0; i<numberOfFilms; i++){ 
+  let whichFilm =prompt("Ո՞ր ֆիլմն եք վերջերս դիտել", );
+  while(whichFilm==="" ||   whichFilm === null  ){
+    whichFilm =prompt("Ո՞ր ֆիլմն եք վերջերս դիտել", );
+  }  
+  let REteFilm  = +prompt(`Ինչքա՞ն եք գնահատում այդ <<${ whichFilm  }>>` );
+     while(REteFilm  === "" ||  REteFilm === 0  || isNaN(REteFilm)){
+      REteFilm  = prompt(`Ինչքա՞ն եք գնահատում այդ <<${whichFilm  }>>`, );
+     } 
+  personalMovieDB.movies[ whichFilm] =  REteFilm;
+}   
       if(personalMovieDB.privat===false){
-        console.log("tuyl chenq tanis")
-      }else{
-        
-        
+        console.log("տվյալների բազան փակ ա")
+      }else{            
         console.log(personalMovieDB);
       }
 
